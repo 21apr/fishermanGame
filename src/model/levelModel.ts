@@ -1,8 +1,8 @@
 import { Fish, fishListToLevels, typeList } from "./fishModel";
 
 export class Level {
-  number: number = 1;
-  goalScore: number = 100;
+  number: number;
+  goalScore: number;
   fishes: Fish[];
   constructor(number: number, goalScore: number, fishes: number[] = [0, 1, 2]) {
     this.number = number;
@@ -19,15 +19,19 @@ export class Level {
   }
 }
 
-export function createLevelList(qtyLevels: number, goalScore: number) {
+function createLevelList(qtyLevels: number, goalScore: number) {
   let levelList: Level[] = [];
+  let goal = goalScore;
   for (let i = 0; i < qtyLevels; i++) {
-    if (i === 0) {
-      levelList.push(new Level(i + 1, goalScore, fishListToLevels[i]));
-    }
-    levelList.push(new Level(i + 1, goalScore + 100, fishListToLevels[i]));
+    levelList.push(new Level(i + 1, goal, fishListToLevels[i]));
+    goal += 100;
+    console.log(levelList[i].fishes)
   }
   return levelList;
 }
 
-export const levelList = createLevelList(3, 100);
+export let levelList = createLevelList(3, 100);
+
+export function restartLevelList() {
+  levelList = createLevelList(3, 100);
+}

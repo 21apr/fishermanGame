@@ -1,4 +1,4 @@
-import { gameOver, ModalWindow, nextLevel } from "./modalWindowModel";
+import { congratulations, gameOver, ModalWindow, nextLevel } from "./modalWindowModel";
 import { size } from "../view/size";
 import { Player } from "./playerModel";
 import { Level, levelList } from "./levelModel";
@@ -13,7 +13,7 @@ export class GameModel {
   level: Level = levelList[0];
 
   constructor() {
-    this.player = new Player("user", -(size.size / 6), size.size / 2);
+    this.player = new Player("user", -(size.size / 6.1), size.size / 2.6);
   }
 
   update() {
@@ -50,10 +50,19 @@ export class GameModel {
   checkLevelCompletion() {
 
     if (this.score >= this.level.goalScore) {
-      this.levelCompleted = true;
-      this.player.hook.stopSound(this.player.hook.backwardSound);
-      this.modalWindow.type = nextLevel;
-      this.modalWindow.renderModal();
+      if (this.level.number === levelList.length) {
+        this.levelCompleted = true;
+        this.player.hook.stopSound(this.player.hook.backwardSound);
+        this.modalWindow.type = congratulations;
+        this.modalWindow.renderModal();
+        console.log("Congratulations! You have completed the game!");
+      } else {
+        this.levelCompleted = true;
+        this.player.hook.stopSound(this.player.hook.backwardSound);
+        this.modalWindow.type = nextLevel;
+        this.modalWindow.renderModal();
+      }
+
 
     } else {
       this.modalWindow.type = gameOver;

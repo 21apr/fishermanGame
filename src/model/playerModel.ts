@@ -122,7 +122,7 @@ export class Hook {
     try {
       const fish = document.querySelector(`#${obj.id}`);
       const fishRect = fish!.getBoundingClientRect();
-      const hookElement = document.querySelector("#hook");
+      const hookElement = document.querySelector("#grab");
       const hookRect = hookElement!.getBoundingClientRect();
 
       const fishX = fishRect.left;

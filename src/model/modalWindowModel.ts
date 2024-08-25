@@ -45,6 +45,6 @@ export class TypeModalWindow {
 const startGame = new TypeModalWindow("Welcome to the Fishing Game", "Use the space key to control the hook and catch as many fish as you can. Each level has a target score you must reach within one minute to advance. Good luck!", "button", "Start Game");
 const nextLevel = new TypeModalWindow("Level Completed", "Your score is high enough to move to the next level", "button", "Next Level");
 const congratulations = new TypeModalWindow("Congratulations", "You have completed all levels", "button", "Game Again");
-const gameOver = new TypeModalWindow("Game Over", "rules", "button", "Restart Game");
+const gameOver = new TypeModalWindow("Game Over", "You didn't score enough points, so the game is over.", "button", "Restart Game");
 
 export { startGame, nextLevel, congratulations, gameOver }

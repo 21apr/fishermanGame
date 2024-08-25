@@ -1,4 +1,5 @@
 import { GameModel } from "../model/gameModel";
+import { levelList, restartLevelList } from "../model/levelModel";
 import { GameView } from "../view/gameView";
 
 export class GameController {
@@ -39,17 +40,33 @@ export class GameController {
     this.view.updateScore(this.model.score);
     this.view.updateTimer(this.model.timer);
 
-    if (this.model.timer < 0) {
+    if (this.model.timer <= 0) {
       this.stop();
       clearInterval(this.intervalId);
       this.model.checkLevelCompletion();
     }
+  }
 
-    // if (this.model.levelCompleted) {
-    //   if (this.intervalId) {
-    //     clearInterval(this.intervalId);
-    //     console.log("Game Stopped, Level Completed");
-    //   }
-    // }
+  restartLevel() {
+    this.stop();
+    this.model.modalWindow.close();
+    this.model.levelCompleted = false;
+    this.model.timer = 60;
+    this.model.score = 0;
+    this.model.player.hook.retract();
+    const index = levelList.indexOf(this.model.level);
+    this.model.level = levelList[index + 1];
+    this.view.updateLevel(this.model.level.number);
+    this.view.updateGoal(this.model.level.goalScore);
+    this.init();
+  }
+
+  restartGame() {
+    this.stop();
+    this.restartLevel();
+    restartLevelList();
+    this.model.level = levelList[0];
+    this.view.updateLevel(this.model.level.number);
+    this.view.updateGoal(this.model.level.goalScore);
   }
 }

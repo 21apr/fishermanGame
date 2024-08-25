@@ -10,6 +10,8 @@ export class GameView {
   scoreElement: HTMLElement;
   timerElement: HTMLElement;
   modalElement: HTMLElement;
+  levelElement: HTMLElement;
+  goalElement: HTMLElement;
 
   constructor() {
     this.playerElement = document.querySelector("#player")!;
@@ -18,6 +20,8 @@ export class GameView {
     this.scoreElement = document.querySelector("#score")!;
     this.timerElement = document.querySelector("#timer")!;
     this.modalElement = document.querySelector("#modal")!;
+    this.levelElement = document.querySelector("#level")!;
+    this.goalElement = document.querySelector("#goal")!;
   }
 
   renderHook(hook: Hook) {
@@ -70,26 +74,26 @@ export class GameView {
   }
 
   updateLevel(level: number) {
-    this.timerElement.innerText = `Level: ${level}`;
+    this.levelElement.innerText = `Level: ${level}`;
   }
 
   updateGoal(goal: number) {
-    this.timerElement.innerText = `Goal: ${goal}`;
+    this.goalElement.innerText = `Goal: ${goal}`;
   }
 }
 
 export function renderGame() {
   const html = `
   <div id="modal"></div>
-  <div class="header" style="height: ${size.size * 0.55}px; font-size: ${
+  <div class="header" style="height: ${size.size * 0.58}px; font-size: ${
     size.size / 10
   }px;">
     <div class="div-box">
         <div id="score">Score: 0</div>
-        <div id="goalLevel">Goal: 100</div>
+        <div id="goal">Goal: 100</div>
     </div>
 
-    <div id="player" style="width: ${size.size}px; height: ${size.size}px;">
+    <div id="player" style="width: ${size.size / 1.3}px; height: ${size.size / 1.3}px;">
       <div id="fishing-rod" style="width: ${size.size / 3}px; height: ${
     size.size / 3
   }px;">
@@ -106,6 +110,11 @@ export function renderGame() {
     </div>
   </div>
   <div class="water"></div>
+  <div id="links">This project incorporates design elements inspired by the works of 
+  <a href="https://www.flaticon.com/authors/juicy-fish">juicy_fish</a>, 
+  <a href="https://creativemarket.com/eucalyp">eucalyp</a>, and 
+  <a href="https://www.freepik.com/">Freepik</a>, sourced from 
+  <a href="https://www.flaticon.com/">Flaticon</a>.</div>
   `;
   const game = document.querySelector("#game") as HTMLElement;
   game.innerHTML = html;

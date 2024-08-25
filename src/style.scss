@@ -1,4 +1,5 @@
 body {
+  position: relative;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -28,6 +29,7 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 25%;
 
       div {
         font-weight: bold;
@@ -38,7 +40,7 @@ body {
 
     #player {
       position: relative;
-      background-image: url(./src/assets/fisher.png);
+      background-image: url(./src/assets/player.png);
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -94,6 +96,20 @@ body {
   width: 100%;
 }
 
+#links {
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+
+  a {
+    color: #fff;
+  }
+}
+
 .fish {
   position: absolute;
   top: 50%;
@@ -147,6 +163,7 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  margin: 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
