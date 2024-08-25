@@ -35,7 +35,6 @@ export class Type {
     value: number;
     speed: number = 0.08;
     depths: number[];
-    // depth: number;
     constructor(width: number, height: number, img: string, value: number, speed: number, depths: number[]) {
         this.width = width;
         this.height = height;
@@ -43,7 +42,6 @@ export class Type {
         this.value = value;
         this.speed = speed;
         this.depths = depths;
-        // this.depth = this.addDepth();
     }
 
     addDepth() {
@@ -52,8 +50,6 @@ export class Type {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
-
-export const fishList: Fish[] = [];
 
 export const typeList: Type[] = [];
 

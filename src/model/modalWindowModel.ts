@@ -27,6 +27,11 @@ export class ModalWindow {
     close() {
         this.element.style.display = "none";
     }
+
+    checkType(type: TypeModalWindow) {
+        this.type = type;
+        this.renderModal();
+    }
 }
 
 export class TypeModalWindow {

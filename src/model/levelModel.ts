@@ -25,7 +25,6 @@ function createLevelList(qtyLevels: number, goalScore: number) {
   for (let i = 0; i < qtyLevels; i++) {
     levelList.push(new Level(i + 1, goal, fishListToLevels[i]));
     goal += 100;
-    console.log(levelList[i].fishes)
   }
   return levelList;
 }

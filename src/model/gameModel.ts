@@ -1,4 +1,9 @@
-import { congratulations, gameOver, ModalWindow, nextLevel } from "./modalWindowModel";
+import {
+  congratulations,
+  gameOver,
+  ModalWindow,
+  nextLevel,
+} from "./modalWindowModel";
 import { size } from "../view/size";
 import { Player } from "./playerModel";
 import { Level, levelList } from "./levelModel";
@@ -18,7 +23,7 @@ export class GameModel {
 
   update() {
     const grab = document.querySelector("#grab") as HTMLElement;
-    if (this.timer >= 0) {
+    if (this.timer > 1) {
       this.timer -= 1 / 60;
     } else {
       this.checkLevelCompletion();
@@ -48,26 +53,17 @@ export class GameModel {
   }
 
   checkLevelCompletion() {
-
     if (this.score >= this.level.goalScore) {
+      this.levelCompleted = true;
       if (this.level.number === levelList.length) {
-        this.levelCompleted = true;
-        this.player.hook.stopSound(this.player.hook.backwardSound);
-        this.modalWindow.type = congratulations;
-        this.modalWindow.renderModal();
+        this.modalWindow.checkType(congratulations);
         console.log("Congratulations! You have completed the game!");
       } else {
-        this.levelCompleted = true;
-        this.player.hook.stopSound(this.player.hook.backwardSound);
-        this.modalWindow.type = nextLevel;
-        this.modalWindow.renderModal();
+        this.modalWindow.checkType(nextLevel);
+        console.log("Congratulations! You have completed the level!");
       }
-
-
     } else {
-      this.modalWindow.type = gameOver;
-      this.modalWindow.renderModal();
-
+      this.modalWindow.checkType(gameOver);
       console.log("The time is up! The level has not been completed.");
     }
   }

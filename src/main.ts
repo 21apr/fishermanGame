@@ -2,7 +2,6 @@ import "./style.scss";
 import { GameController } from "./controller/gameContr";
 import { GameModel } from "./model/gameModel";
 import { GameView, renderGame } from "./view/gameView";
-// import { levelList } from "./model/levelModel";
 
 renderGame();
 

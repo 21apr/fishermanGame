@@ -20,6 +20,8 @@ export class GameController {
 
   stop() {
     if (this.intervalId) {
+      this.model.player.hook.stopSound(this.model.player.hook.backwardSound);
+      this.model.player.hook.stopSound(this.model.player.hook.forwardSound);
       clearInterval(this.intervalId);
       console.log("Game Stopped");
     }
@@ -40,7 +42,7 @@ export class GameController {
     this.view.updateScore(this.model.score);
     this.view.updateTimer(this.model.timer);
 
-    if (this.model.timer <= 0) {
+    if (this.model.timer < 1) {
       this.stop();
       clearInterval(this.intervalId);
       this.model.checkLevelCompletion();
@@ -56,8 +58,11 @@ export class GameController {
     this.model.player.hook.retract();
     const index = levelList.indexOf(this.model.level);
     this.model.level = levelList[index + 1];
-    this.view.updateLevel(this.model.level.number);
-    this.view.updateGoal(this.model.level.goalScore);
+    if (this.model.level !== undefined) {
+      this.view.updateLevel(this.model.level.number);
+      this.view.updateGoal(this.model.level.goalScore);
+    }
+
     this.init();
   }
 

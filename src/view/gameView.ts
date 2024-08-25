@@ -110,11 +110,11 @@ export function renderGame() {
     </div>
   </div>
   <div class="water"></div>
-  <div id="links">This project incorporates design elements inspired by the works of 
-  <a href="https://www.flaticon.com/authors/juicy-fish">juicy_fish</a>, 
-  <a href="https://creativemarket.com/eucalyp">eucalyp</a>, and 
-  <a href="https://www.freepik.com/">Freepik</a>, sourced from 
-  <a href="https://www.flaticon.com/">Flaticon</a>.</div>
+  <div id="links">This project incorporates design elements inspired by the works of
+  <a href="https://www.flaticon.com/authors/juicy-fish" target="_blank">juicy_fish</a>,
+  <a href="https://www.flaticon.com/authors/eucalyp" target="_blank">eucalyp</a>, and
+  <a href="https://www.flaticon.com/authors/freepik" target="_blank">Freepik</a>, sourced from
+  <a href="https://www.flaticon.com" target="_blank">Flaticon</a>.</div>
   `;
   const game = document.querySelector("#game") as HTMLElement;
   game.innerHTML = html;

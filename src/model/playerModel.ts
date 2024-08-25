@@ -5,7 +5,7 @@ export class Player {
   name: string;
   x: number;
   y: number;
-  level: number = 0;
+  // level: number = 0;
   hook: Hook;
   constructor(name: string, x: number, y: number) {
     this.x = x;
