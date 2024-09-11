@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target!.type === "button") {
-    if (event.target!.innerHTML === "Next Level") {
+  if ((event.target! as HTMLButtonElement).type === "button") {
+    if ((event.target! as HTMLButtonElement).innerHTML === "Next Level") {
       controller.restartLevel();
-    } else if (event.target!.innerHTML === "Game Again" || event.target!.innerHTML === "Restart Game") {
+    } else if ((event.target! as HTMLButtonElement).innerHTML === "Game Again" || (event.target! as HTMLButtonElement).innerHTML === "Restart Game") {
       controller.restartGame();
     }
   }

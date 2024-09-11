@@ -39,7 +39,7 @@ export class GameView {
       fishingRod.style.top = `${hook.y}px`;
       hookElem.style.top = `0px`;
     } else {
-      fishingLine.style.height = `${hook.length + 50}px`;
+      fishingLine.style.height = `${hook.length + size.size / 6}px`;
       if (hook.angle < 0) {
         hookElem.style.left = `${hook.length * Math.sin(0)}px`;
         hookElem.style.top = `${hook.length * Math.cos(0)}px`;
@@ -99,7 +99,7 @@ export function renderGame() {
   }px;">
         <div id="fishing-line"></div>
         <div id="hook">
-          <div id="grab"></div>
+          <div id="grab" style="height: ${size.size / 6}px; width: ${size.size / 6}px"></div>
         </div>
       </div>
     </div>

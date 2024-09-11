@@ -15,6 +15,7 @@ export class GameController {
 
   init() {
     document.addEventListener("keydown", (event) => this.handleKeyPress(event));
+    document.addEventListener("click", (event) => this.handleMouseClick(event));
     this.intervalId = setInterval(() => this.gameLoop(), 1000 / 60);
   }
 
@@ -30,6 +31,14 @@ export class GameController {
   handleKeyPress(event: KeyboardEvent) {
     if (event.key === " " && !this.model.levelCompleted) {
       if (!this.model.player.hook.isMoving) {
+        this.model.player.hook.launch();
+      }
+    }
+  }
+
+  handleMouseClick(event: MouseEvent) {
+    if (!this.model.levelCompleted) {
+      if (!this.model.player.hook.isMoving && (event.target as HTMLButtonElement).type !== "button") {
         this.model.player.hook.launch();
       }
     }
